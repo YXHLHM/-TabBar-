@@ -1,0 +1,35 @@
+<!--miniprogram/custom-tab-bar/index.wxml-->
+
+<!-- <cover-view class="tab-bar">
+  <cover-view class="tab-bar-border"></cover-view>
+  <cover-view wx:for="{{list}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
+    <cover-image src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>
+    <cover-view style="color: {{selected === index ? selectedColor : color}}">{{item.text}}</cover-view>
+  </cover-view>
+</cover-view> -->
+
+<!--miniprogram/custom-tab-bar/index.wxml-->
+<!-- <cover-view class="tab-bar">
+  <cover-view class="tab-bar-border"></cover-view>
+  <cover-view wx:for="{{list}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" wx:for-index="index" data-index="{{index}}" bindtap="switchTab">
+    <cover-image class="cover-image"  src="{{selected===index?item.selectedIconPath:item.iconPath}}"></cover-image>
+    <cover-view class="cover-view"  style="color: {{selected === index ? selectedColor : color}} ">{{item.text}}</cover-view>
+  </cover-view>
+</cover-view> -->
+
+
+<!-- class="{{selected == index?'active':''}}"  -->
+<!-- 遇到的问题 -->
+<!-- 1 小程序自定义导航栏点击时会闪一下  将 cover-view 换成 view ，将 cover-image 换成 iamge 即可-->
+<!-- 2 报错：Some selectors are not allowed in component wxss, including tag name selectors, ID selectors, and attribute selectors。class="cover-image" 原因是：在组件 即Component的wxss中使用了不推荐的选择器， 用clas 选择器 即可   -->
+
+<view class="tab-bar">
+ 
+  <view  wx:for="{{list}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" wx:for-index="index" data-index="{{index}}" bindtap="switchTab">
+
+    <image class=" {{selected == index?'active':''}}"  src="{{selected===index?item.selectedIconPath:item.iconPath}}"></image>
+
+    <view  class="{{ item.tuqi }}" wx:if="{{ selected===index }}" class="cover-view"  style="color: {{selected === index ? selectedColor : color}} ">{{item.text}}</view>
+  </view>
+</view>
+
